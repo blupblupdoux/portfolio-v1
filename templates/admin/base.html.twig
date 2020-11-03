@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        
+        {% block stylesheets %}
+            {# 'app' must match the first argument to addEntry() in webpack.config.js #}
+            {{ encore_entry_link_tags('admin') }}
+
+            {# Google fonts #}
+            <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
+
+        {% endblock %}
+
+    </head>
+
+    <body>
+
+        {# Get the current route #}
+         {% set route = app.request.attributes.get('_route') %}
+
+        <header class="header">
+            {% include 'admin/_navbar.html.twig' %}
+        </header>
+
+        <main>
+            <div class="container">
+            
+                  {% block main %}{% endblock %}
+            
+            </div>
+        </main>
+        
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('admin') }}
+        {% endblock %}
+
+    </body>
+</html>

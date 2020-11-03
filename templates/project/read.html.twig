@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{project.name}} - Sarah Bobtchev-Melin{% endblock %}
+
+{% block main %}
+
+    <h2 class="page-title">{{project.name}}</h2>
+
+    <section class="project-details">
+
+        <div class="main-image">
+            {% if project.mainImage %}
+                <img src="{{ asset('images/' ~ project.mainImage) }}" alt="main image of the project"/>
+            {% else %}
+                <img src="{{ asset('images/no-image.png') }}" alt="no image found"/>
+            {% endif %}
+        </div>
+        
+        <div class="details">
+            <div class="project-tags">
+                <ul class="tags-list">
+                    <p>Tags : </p>
+                    {% for tag in project.tags %}
+                        <li class="tag"><a class="btn">{{tag}}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="project-type">
+
+                {% if project.school %}
+                    <p class="type"><span> Ecole :</span> {{project.school.name}}</p>
+                {% elseif project.job %}
+                    <p class="type"><span> Entreprise :</span> {{project.job.name}}</p>
+                {% endif %}
+            
+            </div>
+
+            <p class="project-description">{{project.description}}</p>
+        </div>
+
+    </section>
+
+    {% if project.images|length > 0 %}
+
+        <section class="project-gallery">
+
+            <h3 class="gallery-title">Gallerie</h3>
+
+            <div class="gallery-images">
+                {% for image in project.images %}
+                    <img src="{{ asset('images/' ~ image.path) }}" class="" alt="{{image.alt}}"/>
+                {% endfor %}
+            </div>
+
+        </section>
+
+    {% endif %}
+
+{% endblock %}

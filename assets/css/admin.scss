@@ -1,0 +1,25 @@
+// import Bootstrap
+// the ~ allows you to reference things in node_modules
+@import "~bootstrap/scss/bootstrap";
+
+body {
+
+    .container {
+
+        margin: 0;
+        max-width: 100%;
+
+        .type {
+
+            display: flex;
+
+            .type-job,
+            .type-school {
+
+                width: 50%;
+                margin: 0 0.5%;
+            }
+        }
+        
+    }
+}

@@ -1,0 +1,339 @@
+// screen min-width 
+//(mobile first used, default css for less than 768px)
+$tablet: 768px;
+$desktop: 992px;
+$desktopXL: 1200px;
+
+// my colors
+$darkGrey: #424242;
+$brown: #a44a36;
+$cream: #f1f1f1;
+
+// my fonts
+$badScript: 'Bad Script', cursive;
+
+// customized Bootstrap variables
+$primary: $brown;
+
+// import Bootstrap
+// the ~ allows you to reference things in node_modules
+@import "~bootstrap/scss/bootstrap";
+
+
+body {
+
+    background-color: $cream;
+    font-size: 2.5em;
+
+
+    .header {
+
+        color: $brown;
+
+        .header-title {
+            text-align: center;
+            margin: 5% 0 1%;
+            font-family: $badScript;
+            font-size: 2.5em;
+        }
+
+        .navbar {
+
+            .navbar-toggler {
+                margin: 2% auto;
+                font-size: 1.6em;
+            }
+
+            .navbar-collapse {
+                text-align: center;
+                font-size: 1.3em;
+            }
+        
+            .nav-link:hover {
+                color: $brown;
+            }
+            
+            .nav-link.active {
+                color: $brown;
+                font-weight: bold;
+            }
+        }
+    }
+
+    .container {
+
+        margin-top: 1.5%;
+        max-width: 100%;
+
+        .gallery-title,
+        .page-title,
+        .section-title {
+            text-align: center;
+            font-family: $badScript;
+            margin-bottom: 8%;
+            font-size: 2em;
+        }
+
+        // ANCHOR PROJECTS
+
+        // for tags-list class within the element with filter-menu class
+        .filter-menu {
+        
+            .types-list,
+            .tags-list {
+
+                justify-content: center;
+                margin-top: 1%;
+            }
+        }
+
+        .types-list,
+        .tags-list {
+            list-style: none;
+            display: flex;
+            padding-left: 0;
+
+            .type,
+            .tag {
+
+                margin: 0 1%;
+
+                .btn {
+                    padding: 1px 10px;
+                    color: $brown;
+                    border-color: $brown;
+                    font-size: 1em;
+                    background-color: white;
+                }
+
+                .btn.active {
+                    color: white;
+                    background-color: $brown;
+                }
+            }
+        }
+
+        .projects {
+
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2%;
+
+            .card {
+                // border-color: $brown;
+                // background-color: $cream;
+                width: 100%;
+                margin: 3% 0;
+
+                .card-body > .card-title {
+                    color: $brown;
+                    font-weight: bold;
+                    font-family: $badScript;
+                    font-size: 1.5em;
+                }
+
+                .project-tags > .tags-list >.tag > .btn{
+                    font-size: 0.8em;
+                }
+            }
+        }
+
+        .project-details {
+
+            margin: auto;
+
+            .main-image {
+
+                img {
+                    display: block;
+                    width: 100%;
+                }
+            }
+
+            .details {
+
+                .project-tags > .tags-list > p,
+                .project-type > .type > span {
+                    font-weight: bold;
+                }
+
+                .project-description {
+                    margin: 3% 0;
+                }
+            }
+        }
+
+        .project-gallery {
+
+            margin: auto;
+
+            .gallery-title {
+                margin-top: 3%;
+            }
+
+            .gallery-images {
+
+                display: flex;
+                flex-wrap: wrap;
+
+                img {
+                    width: 100%;
+                    margin: 2% 0;
+                }
+            }
+        }
+
+        // ANCHOR ADMIN LOGIN
+
+        form {
+            width: 100%;
+            margin: auto;
+            font-size: 1.3em;
+
+            .form-control {
+                font-size: 1em;
+            }
+
+            .btn {
+               font-size: 0.8em;
+            }
+        }
+
+        .about {
+
+            // border: 1px solid;
+
+            
+
+            .infos,
+            .school,
+            .job {
+
+                .card {
+
+                    padding: 2%;
+                    margin-bottom: 1%;
+
+                    .card-type {
+                        display: flex;
+                    }
+
+                    .card-right,
+                    .card-left {
+
+                        width: 50%;
+
+                        .card-title {
+                            font-family: $badScript;
+                            font-weight: bold;
+                        }
+                    }
+
+                    .card-right {
+                        margin-left: 3%;
+                        margin-right: 1%;
+                    }
+
+                    .card-left {
+                        margin-right: 3%;
+                        margin-left: 1%;
+                    }
+                    
+                }
+                
+            }
+
+            .infos {
+                .card-body {
+
+                    display: flex;
+                }
+            }
+        }
+    }
+}
+
+
+@media (min-width: $tablet) {
+
+}
+
+@media (min-width: $desktop) {
+
+    body {
+
+        font-size: 1em;
+
+        .header {
+
+            .header-title {
+                text-align: center;
+                margin: 2% 0 1%;
+            }
+
+            .navbar > .navbar-collapse {
+                font-size: 1em;
+            }
+        } 
+    
+        .container {
+
+            max-width: 90%;
+
+            .gallery-title,
+            .page-title,
+            .section-title {
+                margin-bottom: 2.5%;
+            }
+
+            // ANCHOR PROJECTS
+
+            .projects {
+                justify-content: flex-start;
+
+                .card {
+                    width: 32%;
+                    margin: 0.5% 0.5%;
+                }
+            }
+
+            .project-details {
+
+                max-width: 80%;
+                display: flex;
+
+                .main-image {
+                    width: 60%;
+                }
+
+                .details {
+                    width: 40%;
+                    padding: 2%;
+                }
+            }
+        
+            .project-gallery {
+        
+                max-width: 80%;
+        
+                .gallery-images {
+        
+                    img {
+                        width: 48%;
+                        margin: 0.5%;
+                    }
+                }
+            }
+
+            form {
+                width: 50%;
+            }
+        }
+    }
+
+}
+
+@media (min-width: $desktopXL) {
+
+}

@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home - Sarah Bobtchev-Melin{% endblock %}
+
+{% block main %}
+
+<h2 class="page-title">Mes projets</h2>
+
+<section class="filter-menu">
+
+    <ul class="types-list">
+
+        {# {{ path('project_browse_by_type', {'id': id}) }} #}
+        {# {{ route == 'project_browse' ? 'active' }} #}
+        <p class="type">Types</p>
+        <li class="type"><a href="{{ path('project_browse') }}" class="btn {{ route == 'project_browse' ? 'active' }}">Tous</a></li>
+        <li class="type"><a href="{{ path('project_browse_by_type', {'type': 'perso'}) }}" class="btn">Perso</a></li>
+        <li class="type"><a href="{{ path('project_browse_by_type', {'type': 'school'}) }}" class="btn">School</a></li>
+        <li class="type"><a href="{{ path('project_browse_by_type', {'type': 'job'}) }}" class="btn">Job</a></li>
+
+    </ul>
+
+    <ul class="tags-list">
+
+        <p class="type">Tags</p>
+        <li class="type"><a href="{{ path('project_browse') }}" class="btn {{ route == 'project_browse' ? 'active' }}">Tous</a></li>
+
+        {% for tag in tags %}
+            <li class="tag"><a href="{{ path('project_browse_by_tag', {'tag': tag.name}) }}" class="btn">{{tag}}</a></li> 
+        {% endfor %}
+
+    </ul>
+</section>
+
+<section class="projects">
+
+{% for project in projects %}
+
+    <div class="card">
+
+        {% if project.mainImage %}
+            <img src="{{ asset('images/' ~ project.mainImage) }}" class="card-img-top" alt="main image of the project"/>
+        {% endif %}
+        
+
+        <div class="card-body">
+            <h5 class="card-title"><a href="{{ path('project_read', {'id': project.id}) }}">{{project.name}}</a></h5>
+
+            {% if project.tags|length > 0 %}
+
+                <div class="project-tags">
+                    <ul class="tags-list">
+
+                        {% for tag in project.tags %}
+                            <li class="tag"><a class="btn">{{tag}}</a></li>
+                        {% endfor %}
+
+                    </ul>
+                </div>
+
+            {% endif %}
+
+            <div class="card-infos">
+
+                {% if project.school %}
+                    <p class="card-text project-type">Ecole : {{project.school.name}}</p>
+                {% elseif project.job %}
+                    <p class="card-text project-type">Entreprise : {{project.job.name}}</p>
+                {% endif %}
+            
+            </div>
+            
+            <p class="card-text">{{project.description}}</p>
+        </div>
+    </div>
+
+{% endfor %}
+</section>
+    
+
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Projects list{% endblock %}
+
+{% block main %}
+
+    <h2>Projects</h2>
+
+    <a href="{{ path('admin_project_add') }}">Add a project</a>
+
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Type</th>
+                <th scope="col">Tag</th>
+                <th scope="col">Created date</th>
+                <th scope="col">Updated date</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for project in projects %}
+                <tr>
+                    <th scope="row">{{project.id}}</th>
+                    <td>{{project.name}}</td>
+                    <td>{{project.description}}</td>
+                    <td>
+                        {% if project.school is not null %}
+                            School ({{project.school}})
+                        {% elseif project.job is not null %}
+                            Job  ({{project.job}})
+                        {% else %}
+                            Perso
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% for tag in project.tags %}
+                            {{tag.name ~ ' '}}
+                        {% endfor %}
+                    </td>
+                    <td>{{project.createdAt|date('d-m-Y')}}</td>
+                    <td>{{ project.updatedAt is not null ? project.updatedAt|date('d-m-Y') }}</td>
+                    <td>
+                        <a href="{{ path('admin_project_edit', {'id' : project.id}) }}">edit</a> 
+                        <a href="{{ path('admin_project_delete', {'id' : project.id}) }}">delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+
+{% endblock %}

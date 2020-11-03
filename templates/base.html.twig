@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="FR">
+    <head>
+    
+        <meta charset="UTF-8">
+
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        
+        <meta property="og:title" content="Sarah Bobtchev-Melin | Portfolio" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.sarah-bobtchev-melin.com/" />
+        <meta name="description" content="Sarah Bobtchev-Melin, développeuse web PHP/Symfony à Bordeaux." />
+        
+        {% block stylesheets %}
+            {# 'app' must match the first argument to addEntry() in webpack.config.js #}
+            {{ encore_entry_link_tags('app') }}
+
+            {# Google fonts #}
+            <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
+
+        {% endblock %}
+
+    </head>
+
+    <body>
+
+        {# Get the current route #}
+         {% set route = app.request.attributes.get('_route') %}
+
+        <header class="header">
+            <h1 class="header-title">Sarah Bobtchev-Melin</h1>
+            {% include '_navbar.html.twig' %}
+        </header>
+
+        <main>
+            <div class="container">
+            
+                  {% block main %}{% endblock %}
+            
+            </div>
+        </main>
+        
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+
+    </body>
+</html>

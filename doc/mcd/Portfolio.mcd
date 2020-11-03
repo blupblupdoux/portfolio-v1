@@ -1,0 +1,14 @@
+JOB: id, name, description, date, city, createdAt,updatedAt
+PRODUCE, 01 PROJECT, 0N JOB
+MAKE, 01 PROJECT, 0N SCHOOL
+SCHOOL: id, name, description, date, createdAt,updatedAt
+
+IMAGE: id, path, alt, createdAt,updatedAt
+IN, 01 IMAGE, 0N PROJECT
+PROJECT: id,name,image,description,createdAt,updatedAt
+HAD, 0N TAG, 0N PROJECT
+TAG: id, name, color, createdAt,updatedAt
+
+ABOUT: id, name, age, tel, email, github, linkedin, blog, city, description, createdAt,updatedAt
+USER: id, name, email, password, role, createdAt,updatedAt
+MESSAGE: id, name, email, tel, content,createdAt, updatedAt

@@ -1,0 +1,91 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Types list{% endblock %}
+
+{% block main %}
+
+<h2 class="page-title">Types</h2>
+
+<div class="type">
+
+    <section class="type-job">
+
+        <h3>Jobs</h3>
+
+        <a href="{{ path('admin_type_job_add') }}">Add a job</a>
+
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">City</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Created date</th>
+                    <th scope="col">Updated date</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for job in jobs %}
+                    <tr>
+                        <th scope="row">{{job.id}}</th>
+                        <td>{{job.name}}</td>
+                        <td>{{job.date}}</td>
+                        <td>{{job.city}}</td>
+                        <td>{{job.description}}</td>
+                        <td>{{job.createdAt|date('d-m-Y')}}</td>
+                        <td>{{ job.updatedAt is not null ? job.updatedAt|date('d-m-Y') }}</td>
+                        <td>
+                            <a href="{{ path('admin_type_job_edit', {'id' : job.id}) }}">edit</a> 
+                            <a href="{{ path('admin_type_job_delete', {'id' : job.id}) }}">delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+    <section class="type-school">
+
+        <h3>Schools</h3>
+
+        <a href="{{ path('admin_type_school_add') }}">Add a school</a>
+
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Created date</th>
+                    <th scope="col">Updated date</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for school in schools %}
+                    <tr>
+                        <th scope="row">{{school.id}}</th>
+                        <td>{{school.name}}</td>
+                        <td>{{school.date}}</td>
+                        <td>{{school.description}}</td>
+                        <td>{{school.createdAt|date('d-m-Y')}}</td>
+                        <td>{{ school.updatedAt is not null ? school.updatedAt|date('d-m-Y') }}</td>
+                        <td>
+                            <a href="{{ path('admin_type_school_edit', {'id' : school.id}) }}">edit</a> 
+                            <a href="{{ path('admin_type_school_delete', {'id' : school.id}) }}">delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                
+            </tbody>
+        </table>
+    </section>
+</div>
+
+{% endblock %}

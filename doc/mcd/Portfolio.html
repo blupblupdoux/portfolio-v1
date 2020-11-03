@@ -1,0 +1,111 @@
+<html>
+<head>
+<meta charset='utf-8'>
+<style>
+  #mld .relation { font-variant: small-caps; font-weight: bold }
+  #mld .primary { text-decoration: underline }
+  #mld .foreign { font-style: oblique }
+  #mld .normal { }
+</style>
+</head>
+<body>
+<div id='mld'>
+<div>
+  <span class='relation'>JOB</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>name</span>,
+    <span class='normal'>description</span>,
+    <span class='normal'>date</span>,
+    <span class='normal'>city</span>,
+    <span class='normal'>createdAt</span>,
+    <span class='normal'>updatedAt</span>
+  )
+</div>
+<div>
+  <span class='relation'>SCHOOL</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>name</span>,
+    <span class='normal'>description</span>,
+    <span class='normal'>date</span>,
+    <span class='normal'>createdAt</span>,
+    <span class='normal'>updatedAt</span>
+  )
+</div>
+<div>
+  <span class='relation'>IMAGE</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>path</span>,
+    <span class='normal'>alt</span>,
+    <span class='normal'>createdAt</span>,
+    <span class='normal'>updatedAt</span>,
+    <span class='foreign'>id.1</span>
+  )
+</div>
+<div>
+  <span class='relation'>PROJECT</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>name</span>,
+    <span class='normal'>image</span>,
+    <span class='normal'>description</span>,
+    <span class='normal'>createdAt</span>,
+    <span class='normal'>updatedAt</span>,
+    <span class='foreign'>id.1</span>,
+    <span class='foreign'>id.2</span>
+  )
+</div>
+<div>
+  <span class='relation'>HAD</span> (
+    <span class='foreign primary'>id</span>,
+    <span class='foreign primary'>id.1</span>
+  )
+</div>
+<div>
+  <span class='relation'>TAG</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>name</span>,
+    <span class='normal'>color</span>,
+    <span class='normal'>createdAt</span>,
+    <span class='normal'>updatedAt</span>
+  )
+</div>
+<div>
+  <span class='relation'>ABOUT</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>name</span>,
+    <span class='normal'>age</span>,
+    <span class='normal'>tel</span>,
+    <span class='normal'>email</span>,
+    <span class='normal'>github</span>,
+    <span class='normal'>linkedin</span>,
+    <span class='normal'>blog</span>,
+    <span class='normal'>city</span>,
+    <span class='normal'>description</span>,
+    <span class='normal'>createdAt</span>,
+    <span class='normal'>updatedAt</span>
+  )
+</div>
+<div>
+  <span class='relation'>USER</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>name</span>,
+    <span class='normal'>email</span>,
+    <span class='normal'>password</span>,
+    <span class='normal'>role</span>,
+    <span class='normal'>createdAt</span>,
+    <span class='normal'>updatedAt</span>
+  )
+</div>
+<div>
+  <span class='relation'>MESSAGE</span> (
+    <span class='primary'>id</span>,
+    <span class='normal'>name</span>,
+    <span class='normal'>email</span>,
+    <span class='normal'>tel</span>,
+    <span class='normal'>content</span>,
+    <span class='normal'>createdAt</span>,
+    <span class='normal'>updatedAt</span>
+  )
+</div>
+</div>
+</body>
+</html>
